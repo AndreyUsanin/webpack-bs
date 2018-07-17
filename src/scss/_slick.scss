@@ -1,0 +1,17 @@
+.single-item {
+  position: relative;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.slider-nav {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slick-next, .slick-prev  {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
