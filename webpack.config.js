@@ -5,12 +5,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = {
-  entry: './src/index.js',
+  // entry: './src/index.js',
 
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
-  },
+  // output: {
+  //   filename: "[name].bundle.js",
+  //   path: path.resolve(__dirname, "dist")
+  // },
 
   mode: 'development',
 
@@ -77,6 +77,9 @@ module.exports = {
       // both options are optional
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    })
+    }),
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV',
+    ])
   ]
 };

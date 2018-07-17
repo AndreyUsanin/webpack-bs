@@ -8,6 +8,7 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
+  transform: translate3d(0, 0, 0);
 }
 
 .slick-next, .slick-prev  {

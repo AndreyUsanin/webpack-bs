@@ -1,8 +1,7 @@
-const path = require('path');
+const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-
+const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -12,11 +11,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
 
-  mode: 'development',
-
-  devServer: {
-    contentBase: path.join(__dirname, 'dist')
-  },
 
   module: {
     rules: [
@@ -57,7 +51,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8000,
-              name: 'images/[hash]-[name].[ext]'
+              name: 'images/[hash]-[name].[ext]',
+              fallback: 'file-loader'
             }
           }
         ]
@@ -75,8 +70,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    })
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
+    
   ]
 };
